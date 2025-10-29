@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+    website:
+        image: nginx
+        ports:
+            - 8081:80
+        restart: always
+    website2:
+        image: nginx
+        ports:
+            - 8082:80
+        restart: always
+        networks:
+            - multidoc
+
+networks:
+    multidoc:
+        ipam:
+            driver: default
+            config:
+                - subnet: "10.248.0.0/20"
